@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/gyuraszkrisztian/Develop/Java/YoutubeDownloader
+/home/gyuraszkrisztian/Develop/Java/JDK8/bin/java -jar dist/YoutubeDownloader.jar

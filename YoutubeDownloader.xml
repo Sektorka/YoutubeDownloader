@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<YoutubeDownloader>
+    <dbHost>localhost</dbHost>
+    <dbUser>youtube</dbUser>
+    <dbPass>123456</dbPass>
+    <dbName>youtube_downloader</dbName>
+    <strDownloadPath>/home/gyuraszkrisztian/Zenék</strDownloadPath>
+    <replaceKeyWord>_</replaceKeyWord>
+    <proxyHost>192.168.20.65</proxyHost>
+    <proxyUser>gyuraszkrisztian</proxyUser>
+    <proxyPass>sektor89</proxyPass>
+    <ffmpegPath>/home/gyuraszkrisztian/ffmpeg-2.4-32bit-static/ffmpeg</ffmpegPath>
+    <appTheme>Nimbus</appTheme>
+    <dbPort>3306</dbPort>
+    <defualtOperation>1</defualtOperation>
+    <proxyPort>3128</proxyPort>
+    <bAutoDownload>false</bAutoDownload>
+    <bDeleteUnfinisedVideoFile>true</bDeleteUnfinisedVideoFile>
+</YoutubeDownloader>

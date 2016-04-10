@@ -1,0 +1,636 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x682b8d18, pid=9259, tid=1745984368
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_20-b26) (build 1.8.0_20-b26)
+# Java VM: Java HotSpot(TM) Server VM (25.20-b23 mixed mode linux-x86 )
+# Problematic frame:
+# C  [sqlite-3.7.2-libsqlitejdbc.so+0x34d18]
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0a31c800):  JavaThread "Thread-1" [_thread_in_native, id=9288, stack(0x680c9000,0x6811a000)]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x00000044
+
+Registers:
+EAX=0x00000000, EBX=0x682f3fc4, ECX=0x0a31c930, EDX=0x00000000
+ESP=0x68118cb4, EBP=0x68118cc8, ESI=0x0a4bac40, EDI=0xb6cb6a20
+EIP=0x682b8d18, EFLAGS=0x00010216, CR2=0x00000044
+
+Top of Stack: (sp=0x68118cb4)
+0x68118cb4:   0a4bac40 68118cc8 682b8d10 682f3fc4
+0x68118cc4:   00000000 68118ce8 682b8dfa 682f3860
+0x68118cd4:   b6cb6a20 68118ce8 682b8de7 682f3fc4
+0x68118ce4:   0a31c930 68118d18 6828c268 0a4bac40
+0x68118cf4:   00000002 68118d20 68118d44 00000001
+0x68118d04:   0a31c800 0000000a 683d2128 683d2124
+0x68118d14:   0a31c800 68118d6c a76c046e 0a31c930
+0x68118d24:   68118d88 0a4bac40 00000000 00000002 
+
+Instructions: (pc=0x682b8d18)
+0x682b8cf8:   1b 1d fd ff 81 c3 c8 b2 03 00 85 c0 74 1d 8b 50
+0x682b8d08:   58 8b 00 e8 d8 f4 ff ff 83 ec 0c 89 46 58 8b 06
+0x682b8d18:   ff 70 44 e8 54 17 fd ff 83 c4 10 8d 65 f8 5b 5e
+0x682b8d28:   5d c3 55 89 e5 56 8b 55 0c 53 8b 45 08 e8 dd 1c 
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0x682f3fc4: <offset 0x6ffc4> in /tmp/sqlite-3.7.2-libsqlitejdbc.so at 0x68284000
+ECX=0x0a31c930 is an unknown value
+EDX=0x00000000 is an unknown value
+ESP=0x68118cb4 is pointing into the stack for thread: 0x0a31c800
+EBP=0x68118cc8 is pointing into the stack for thread: 0x0a31c800
+ESI=0x0a4bac40 is an unknown value
+EDI=0xb6cb6a20: <offset 0x523a20> in /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/server/libjvm.so at 0xb6793000
+
+
+Stack: [0x680c9000,0x6811a000],  sp=0x68118cb4,  free space=319k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [sqlite-3.7.2-libsqlitejdbc.so+0x34d18]
+C  [sqlite-3.7.2-libsqlitejdbc.so+0x34dfa]  sqlite3_column_text+0x2e
+C  [sqlite-3.7.2-libsqlitejdbc.so+0x8268]  Java_org_sqlite_NativeDB_column_1text+0x2a
+j  org.sqlite.NativeDB.column_text(JI)Ljava/lang/String;+0
+j  org.sqlite.RS.getString(I)Ljava/lang/String;+16
+j  org.sqlite.RS.getString(Ljava/lang/String;)Ljava/lang/String;+6
+j  youtubedownloader.classes.DBManager.getVideos()Ljava/util/ArrayList;+50
+j  youtubedownloader.forms.MainForm.<init>()V+332
+j  youtubedownloader.forms.MainForm.getInstance()Lyoutubedownloader/forms/MainForm;+10
+j  youtubedownloader.classes.Download.run()V+457
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x4d445f]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x101f
+V  [libjvm.so+0x71bc39]  os::os_exception_wrapper(void (*)(JavaValue*, methodHandle*, JavaCallArguments*, Thread*), JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x19
+V  [libjvm.so+0x4d487c]  JavaCalls::call_virtual(JavaValue*, KlassHandle, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x25c
+V  [libjvm.so+0x4d4cbb]  JavaCalls::call_virtual(JavaValue*, Handle, KlassHandle, Symbol*, Symbol*, Thread*)+0x4b
+V  [libjvm.so+0x54aa3a]  thread_entry(JavaThread*, Thread*)+0x7a
+V  [libjvm.so+0x849b99]  JavaThread::thread_main_inner()+0x109
+V  [libjvm.so+0x849d1b]  JavaThread::run()+0x14b
+V  [libjvm.so+0x723509]  java_start(Thread*)+0x119
+C  [libpthread.so.0+0x5c39]  start_thread+0xc9
+C  [libc.so.6+0xd6a6e]  clone+0x5e
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  org.sqlite.NativeDB.column_text(JI)Ljava/lang/String;+0
+j  org.sqlite.RS.getString(I)Ljava/lang/String;+16
+j  org.sqlite.RS.getString(Ljava/lang/String;)Ljava/lang/String;+6
+j  youtubedownloader.classes.DBManager.getVideos()Ljava/util/ArrayList;+50
+j  youtubedownloader.forms.MainForm.<init>()V+332
+j  youtubedownloader.forms.MainForm.getInstance()Lyoutubedownloader/forms/MainForm;+10
+j  youtubedownloader.classes.Download.run()V+457
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0a236c00 JavaThread "process reaper" daemon [_thread_blocked, id=9308, stack(0x67a31000,0x67a4a000)]
+  0x0a27b800 JavaThread "Thread-9" [_thread_blocked, id=9306, stack(0x67d0d000,0x67d5e000)]
+  0x67e13800 JavaThread "Thread-8" [_thread_blocked, id=9304, stack(0x67d5e000,0x67daf000)]
+  0x0a4bb800 JavaThread "Thread-7" [_thread_blocked, id=9303, stack(0x67daf000,0x67e00000)]
+  0x0a254400 JavaThread "Thread-6" [_thread_in_vm, id=9301, stack(0x67f1b000,0x67f6c000)]
+  0x0a18d800 JavaThread "Thread-5" [_thread_blocked, id=9299, stack(0x67f6c000,0x67fbd000)]
+  0x0a18bc00 JavaThread "Thread-4" [_thread_in_native, id=9298, stack(0x67fbd000,0x6800e000)]
+  0x0a187400 JavaThread "Thread-3" [_thread_in_native, id=9297, stack(0x6800e000,0x6805f000)]
+  0x0a320000 JavaThread "Thread-2" [_thread_in_native, id=9296, stack(0x6805f000,0x680b0000)]
+  0x0a31e800 JavaThread "process reaper" daemon [_thread_in_native, id=9290, stack(0x680b0000,0x680c9000)]
+=>0x0a31c800 JavaThread "Thread-1" [_thread_in_native, id=9288, stack(0x680c9000,0x6811a000)]
+  0x0a31a800 JavaThread "process reaper" daemon [_thread_in_native, id=9281, stack(0x6811a000,0x68133000)]
+  0x0a2f7c00 JavaThread "Thread-0" [_thread_in_native, id=9279, stack(0x68133000,0x68184000)]
+  0x68655c00 JavaThread "Image Fetcher 1" daemon [_thread_blocked, id=9278, stack(0x6845e000,0x684af000)]
+  0x68654000 JavaThread "Image Fetcher 0" daemon [_thread_blocked, id=9277, stack(0x684af000,0x68500000)]
+  0x68ca5800 JavaThread "DestroyJavaVM" [_thread_blocked, id=9260, stack(0xb671c000,0xb676d000)]
+  0x68ca4400 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=9276, stack(0x68715000,0x68766000)]
+  0x68cd9000 JavaThread "AWT-Shutdown" [_thread_blocked, id=9275, stack(0x68766000,0x687b7000)]
+  0x68c71400 JavaThread "AWT-XAWT" daemon [_thread_in_native, id=9273, stack(0x68d36000,0x68d87000)]
+  0x68c5c400 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=9272, stack(0x68d87000,0x68dd8000)]
+  0x69b26800 JavaThread "Service Thread" daemon [_thread_blocked, id=9270, stack(0x69c18000,0x69c69000)]
+  0x69b22000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=9269, stack(0x690ef000,0x69170000)]
+  0x69b20000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=9268, stack(0x69170000,0x691f1000)]
+  0x69b1ec00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9267, stack(0x691f1000,0x69242000)]
+  0x69b00800 JavaThread "Finalizer" daemon [_thread_blocked, id=9266, stack(0x69c69000,0x69cba000)]
+  0x0a131c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=9265, stack(0x693bd000,0x6940e000)]
+
+Other Threads:
+  0x0a12d800 VMThread [stack: 0x6940e000,0x6948f000] [id=9264]
+  0x69b50c00 WatcherThread [stack: 0x6906e000,0x690ef000] [id=9271]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x09ff2b68] Threads_lock - owner thread: 0x0a254400
+
+Heap:
+ PSYoungGen      total 17920K, used 7436K [0x93780000, 0x94b80000, 0xa7200000)
+  eden space 15360K, 31% used [0x93780000,0x93c44028,0x94680000)
+  from space 2560K, 99% used [0x94680000,0x948ff350,0x94900000)
+  to   space 2560K, 0% used [0x94900000,0x94900000,0x94b80000)
+ ParOldGen       total 40960K, used 898K [0x6c200000, 0x6ea00000, 0x93780000)
+  object space 40960K, 2% used [0x6c200000,0x6c2e0910,0x6ea00000)
+ Metaspace       used 10014K, capacity 10158K, committed 10264K, reserved 10544K
+
+Card table byte_map: [0x6c027000,0x6c200000] byte_map_base: 0x6bcc6000
+
+Marking Bits: (ParMarkBitMap*) 0xb7149380
+ Begin Bits: [0x6a06a000, 0x6af2a000)
+ End Bits:   [0x6af2a000, 0x6bdea000)
+
+Polling page: 0xb7715000
+
+CodeCache: size=245760Kb used=2764Kb max_used=2764Kb free=242995Kb
+ bounds [0xa76b4000, 0xa796c000, 0xb66b4000]
+ total_blobs=1286 nmethods=1004 adapters=197
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 7,285 Thread 0x69b22000 nmethod 974 0xa794f688 code [0xa794f800, 0xa794fcc4]
+Event: 7,285 Thread 0x69b22000  975       3       java.beans.PropertyChangeEvent::<init> (22 bytes)
+Event: 7,285 Thread 0x69b22000 nmethod 975 0xa794ff48 code [0xa7950080, 0xa79502cc]
+Event: 7,285 Thread 0x69b22000  972       3       java.lang.System::checkKey (34 bytes)
+Event: 7,286 Thread 0x69b22000 nmethod 972 0xa7950408 code [0xa7950560, 0xa79507e4]
+Event: 7,286 Thread 0x69b22000  973       1       javax.swing.JTable::getColumnModel (5 bytes)
+Event: 7,286 Thread 0x69b22000 nmethod 973 0xa7950908 code [0xa7950a00, 0xa7950aa0]
+Event: 7,286 Thread 0x69b22000  976   !   3       java.awt.Component::setFont (97 bytes)
+Event: 7,287 Thread 0x69b22000 nmethod 976 0xa7950b08 code [0xa7950ce0, 0xa795181c]
+Event: 7,289 Thread 0x69b20000 nmethod 963 0xa7954c88 code [0xa7954dc0, 0xa7955250]
+
+GC Heap History (2 events):
+Event: 7,163 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 17920K, used 15360K [0x93780000, 0x94b80000, 0xa7200000)
+  eden space 15360K, 100% used [0x93780000,0x94680000,0x94680000)
+  from space 2560K, 0% used [0x94900000,0x94900000,0x94b80000)
+  to   space 2560K, 0% used [0x94680000,0x94680000,0x94900000)
+ ParOldGen       total 40960K, used 0K [0x6c200000, 0x6ea00000, 0x93780000)
+  object space 40960K, 0% used [0x6c200000,0x6c200000,0x6ea00000)
+ Metaspace       used 9811K, capacity 9966K, committed 10008K, reserved 10544K
+Event: 7,183 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 17920K, used 2556K [0x93780000, 0x94b80000, 0xa7200000)
+  eden space 15360K, 0% used [0x93780000,0x93780000,0x94680000)
+  from space 2560K, 99% used [0x94680000,0x948ff350,0x94900000)
+  to   space 2560K, 0% used [0x94900000,0x94900000,0x94b80000)
+ ParOldGen       total 40960K, used 898K [0x6c200000, 0x6ea00000, 0x93780000)
+  object space 40960K, 2% used [0x6c200000,0x6c2e0910,0x6ea00000)
+ Metaspace       used 9811K, capacity 9966K, committed 10008K, reserved 10544K
+}
+
+Deoptimization events (10 events):
+Event: 4,905 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77c4f8c method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 4,911 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77c4f8c method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 5,068 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77cce58 method=java.util.Properties$LineReader.readLine()I @ 62
+Event: 5,068 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77ccea0 method=java.util.Properties$LineReader.readLine()I @ 410
+Event: 5,068 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77cce58 method=java.util.Properties$LineReader.readLine()I @ 62
+Event: 5,330 Thread 0x68ca4400 Uncommon trap: reason=unloaded action=reinterpret pc=0xa7882148 method=org.sqlite.SQLiteJDBCLoader.md5sum(Ljava/io/InputStream;)Ljava/lang/String; @ 35
+Event: 5,331 Thread 0x68ca4400 Uncommon trap: reason=unreached action=reinterpret pc=0xa787be0c method=sun.security.provider.DigestBase.engineUpdate(B)V @ 4
+Event: 6,132 Thread 0x68ca4400 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77cce58 method=java.util.Properties$LineReader.readLine()I @ 62
+Event: 6,905 Thread 0x0a320000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77c4f8c method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 6,917 Thread 0x0a320000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xa77c4f8c method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+
+Internal exceptions (10 events):
+Event: 5,372 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f57550) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 5,412 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f5b0a0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 5,429 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f61ba8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 5,430 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f639f0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 5,433 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f670a0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 5,434 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f68fd8) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 6,040 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f8ea10) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 6,040 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x93f8f3e0) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 6,363 Thread 0x68ca4400 Exception <a 'java/security/PrivilegedActionException'> (0x9402d718) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+Event: 6,453 Thread 0x0a2f7c00 Exception <a 'java/security/PrivilegedActionException'> (0x94085038) thrown at [/HUDSON/workspace/8-2-build-linux-i586/jdk8u20/1074/hotspot/src/share/vm/prims/jvm.cpp, line 1275]
+
+Events (10 events):
+Event: 7,020 Thread 0x68ca4400 DEOPT UNPACKING pc=0xa76f0310 sp=0x68763eb0 mode 0
+Event: 7,044 Thread 0x0a18bc00 Thread added: 0x0a18bc00
+Event: 7,094 Executing VM operation: BulkRevokeBias
+Event: 7,094 Executing VM operation: BulkRevokeBias done
+Event: 7,109 Thread 0x0a18d800 Thread added: 0x0a18d800
+Event: 7,161 Executing VM operation: ParallelGCFailedAllocation
+Event: 7,183 Executing VM operation: ParallelGCFailedAllocation done
+Event: 7,249 Executing VM operation: RevokeBias
+Event: 7,249 Executing VM operation: RevokeBias done
+Event: 7,268 Thread 0x0a254400 Thread added: 0x0a254400
+
+
+Dynamic libraries:
+08048000-08049000 r-xp 00000000 00:14 4014496    /home/gyuraszkrisztian/Develop/Java/JDK8/bin/java
+08049000-0804a000 rw-p 00000000 00:14 4014496    /home/gyuraszkrisztian/Develop/Java/JDK8/bin/java
+09fed000-0a4d7000 rw-p 00000000 00:00 0          [heap]
+67a31000-67a34000 ---p 00000000 00:00 0 
+67a34000-67d0d000 rw-p 00000000 00:00 0 
+67d0d000-67d10000 ---p 00000000 00:00 0 
+67d10000-67d5e000 rw-p 00000000 00:00 0 
+67d5e000-67d61000 ---p 00000000 00:00 0 
+67d61000-67daf000 rw-p 00000000 00:00 0 
+67daf000-67db2000 ---p 00000000 00:00 0 
+67db2000-67e00000 rw-p 00000000 00:00 0 
+67e00000-67e9d000 rw-p 00000000 00:00 0 
+67e9d000-67f00000 ---p 00000000 00:00 0 
+67f02000-67f1b000 rw-p 00000000 00:00 0 
+67f1b000-67f1e000 ---p 00000000 00:00 0 
+67f1e000-67f6c000 rw-p 00000000 00:00 0 
+67f6c000-67f6f000 ---p 00000000 00:00 0 
+67f6f000-67fbd000 rw-p 00000000 00:00 0 
+67fbd000-67fc0000 ---p 00000000 00:00 0 
+67fc0000-6800e000 rw-p 00000000 00:00 0 
+6800e000-68011000 ---p 00000000 00:00 0 
+68011000-6805f000 rw-p 00000000 00:00 0 
+6805f000-68062000 ---p 00000000 00:00 0 
+68062000-680b0000 rw-p 00000000 00:00 0 
+680b0000-680b3000 ---p 00000000 00:00 0 
+680b3000-680c9000 rw-p 00000000 00:00 0 
+680c9000-680cc000 ---p 00000000 00:00 0 
+680cc000-6811a000 rw-p 00000000 00:00 0 
+6811a000-6811d000 ---p 00000000 00:00 0 
+6811d000-68133000 rw-p 00000000 00:00 0 
+68133000-68136000 ---p 00000000 00:00 0 
+68136000-68244000 rw-p 00000000 00:00 0 
+68244000-68284000 ---p 00000000 00:00 0 
+68284000-682f3000 r-xp 00000000 08:02 1663090    /tmp/sqlite-3.7.2-libsqlitejdbc.so
+682f3000-682f5000 rw-p 0006e000 08:02 1663090    /tmp/sqlite-3.7.2-libsqlitejdbc.so
+682f5000-682f6000 rw-p 00000000 00:00 0 
+682f6000-68356000 r-xp 00000000 00:14 25788481   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libt2k.so
+68356000-6835a000 rw-p 00060000 00:14 25788481   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libt2k.so
+6835a000-6845e000 rw-p 00000000 00:00 0 
+6845e000-68461000 ---p 00000000 00:00 0 
+68461000-684af000 rw-p 00000000 00:00 0 
+684af000-684b2000 ---p 00000000 00:00 0 
+684b2000-68600000 rw-p 00000000 00:00 0 
+68600000-68700000 rw-p 00000000 00:00 0 
+68715000-68718000 ---p 00000000 00:00 0 
+68718000-68766000 rw-p 00000000 00:00 0 
+68766000-68769000 ---p 00000000 00:00 0 
+68769000-687b7000 rw-p 00000000 00:00 0 
+687b7000-687b8000 r--s 00000000 08:02 1147742    /var/cache/fontconfig/c05880de57d1f5e948fdfacc138775d9-le32d4.cache-3
+687b8000-687be000 r--s 00000000 08:02 1147741    /var/cache/fontconfig/945677eb7aeaf62f1d50efc3fb3ec7d8-le32d4.cache-3
+687be000-687c0000 r--s 00000000 08:02 1147717    /var/cache/fontconfig/f24b2111ab8703b4e963115a8cf14259-le32d4.cache-3
+687c0000-687c5000 r--s 00000000 08:02 1147739    /var/cache/fontconfig/3fdcac6013931cd7c06449c5f8fab136-le32d4.cache-3
+687c5000-687c9000 r--s 00000000 08:02 1147738    /var/cache/fontconfig/6eb3985aa4124903f6ff08ba781cd364-le32d4.cache-3
+687c9000-687ca000 r--s 00000000 08:02 1147736    /var/cache/fontconfig/0cbec7fefbf586a62e8b29e50474223e-le32d4.cache-3
+687ca000-687cc000 r--s 00000000 08:02 1147735    /var/cache/fontconfig/f680583fed5bdc90d95a16af47e16528-le32d4.cache-3
+687cc000-687d3000 r--s 00000000 08:02 1147734    /var/cache/fontconfig/6d41288fd70b0be22e8c3a91e032eec0-le32d4.cache-3
+687d3000-687d4000 r--s 00000000 08:02 1147733    /var/cache/fontconfig/9451a55048e8dbe8633e64d34165fdf2-le32d4.cache-3
+687d4000-687d5000 r--s 00000000 08:02 1148533    /var/cache/fontconfig/4794a0821666d79190d59a36cb4f44b5-le32d4.cache-3
+687d5000-687d7000 r--s 00000000 08:02 1147731    /var/cache/fontconfig/48b6b01af2a6a6e7e7f3fa61998c4afa-le32d4.cache-3
+687d7000-687fa000 r--s 00000000 08:02 1147730    /var/cache/fontconfig/365b55f210c0a22e9a19e35191240f32-le32d4.cache-3
+687fa000-687fc000 r--s 00000000 08:02 1147728    /var/cache/fontconfig/c57959a16110560c8d0fcea73374aeeb-le32d4.cache-3
+687fc000-68800000 r--s 00000000 08:02 1147727    /var/cache/fontconfig/3047814df9a2f067bd2d96a2b9c36e5a-le32d4.cache-3
+68800000-68802000 r--s 00000000 08:02 1147726    /var/cache/fontconfig/14d493b97896515cad3840ba4896e372-le32d4.cache-3
+68802000-68804000 r--s 00000000 08:02 1147725    /var/cache/fontconfig/e49e89034d371f0f9de17aab02136486-le32d4.cache-3
+68804000-68805000 r--s 00000000 08:02 1147724    /var/cache/fontconfig/4b14b093aebc79c320de5e86ae1d3314-le32d4.cache-3
+68805000-68812000 r--s 00000000 08:02 1147723    /var/cache/fontconfig/d52a8644073d54c13679302ca1180695-le32d4.cache-3
+68812000-68817000 r--s 00000000 08:02 1147721    /var/cache/fontconfig/105b9c7e6f0a4f82d8c9b6e39c52c6f9-le32d4.cache-3
+68817000-6881d000 r--s 00000000 08:02 1147720    /var/cache/fontconfig/3f7329c5293ffd510edef78f73874cfd-le32d4.cache-3
+6881d000-6881e000 r--s 00000000 08:02 1147718    /var/cache/fontconfig/8cc03e3a04a09d98b32b781e5f64018d-le32d4.cache-3
+6881e000-68820000 r--s 00000000 08:02 1147649    /var/cache/fontconfig/7ced87123e2d184881c6610d82463bf1-le32d4.cache-3
+68820000-68827000 r--s 00000000 08:02 1147716    /var/cache/fontconfig/83bf95040141907cd45bb53cf7c1c148-le32d4.cache-3
+68827000-68828000 r--s 00000000 08:02 1147715    /var/cache/fontconfig/62f91419b9ebdb6975e7e41ab6412357-le32d4.cache-3
+68828000-68829000 r--s 00000000 08:02 1147714    /var/cache/fontconfig/3fe29f0c9fa221c8ee16555d4835b3ab-le32d4.cache-3
+68829000-6883f000 r--s 00000000 08:02 1147704    /var/cache/fontconfig/cabbd14511b9e8a55e92af97fb3a0461-le32d4.cache-3
+6883f000-68852000 r--s 00000000 08:02 1148815    /var/cache/fontconfig/e13b20fdb08344e0e664864cc2ede53d-le32d4.cache-3
+6885b000-68865000 r--s 00116000 00:14 4636678    /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/ext/localedata.jar
+68865000-68965000 rw-p 00000000 00:00 0 
+68965000-68a65000 rw-p 00000000 00:00 0 
+68a65000-68a7a000 r-xp 00000000 00:14 15164049   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libnet.so
+68a7a000-68a7b000 rw-p 00014000 00:14 15164049   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libnet.so
+68a7b000-68a97000 r-xp 00000000 08:02 6807567    /lib/i386-linux-gnu/libgcc_s.so.1
+68a97000-68a98000 rw-p 0001b000 08:02 6807567    /lib/i386-linux-gnu/libgcc_s.so.1
+68a98000-68af9000 r-xp 00000000 00:14 25788474   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libfontmanager.so
+68af9000-68afc000 rw-p 00060000 00:14 25788474   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libfontmanager.so
+68afc000-68c00000 rw-p 00000000 00:00 0 
+68c00000-68d00000 rw-p 00000000 00:00 0 
+68d05000-68d21000 r--s 00393000 00:14 4636674    /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/ext/cldrdata.jar
+68d21000-68d26000 r--s 00092000 00:14 4047002    /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/jsse.jar
+68d26000-68d35000 r-xp 00000000 00:14 25788464   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libnio.so
+68d35000-68d36000 rw-p 0000e000 00:14 25788464   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libnio.so
+68d36000-68d39000 ---p 00000000 00:00 0 
+68d39000-68d87000 rw-p 00000000 00:00 0 
+68d87000-68d8a000 ---p 00000000 00:00 0 
+68d8a000-68dd8000 rw-p 00000000 00:00 0 
+68dd8000-68ddd000 r-xp 00000000 08:02 6664305    /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+68ddd000-68dde000 rw-p 00004000 08:02 6664305    /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+68dde000-68dff000 r-xp 00000000 08:02 1179747    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+68dff000-68e00000 r--p 00020000 08:02 1179747    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+68e00000-68e01000 rw-p 00021000 08:02 1179747    /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+68e01000-68f35000 r-xp 00000000 08:02 1425425    /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+68f35000-68f39000 rw-p 00133000 08:02 1425425    /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+68f39000-68f4a000 r-xp 00000000 08:02 1425439    /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+68f4a000-68f4b000 rw-p 00010000 08:02 1425439    /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+68f4d000-68f51000 r-xp 00000000 08:02 1425443    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+68f51000-68f52000 r--p 00003000 08:02 1425443    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+68f52000-68f53000 rw-p 00004000 08:02 1425443    /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0
+68f53000-68f5c000 r-xp 00000000 08:02 1425456    /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+68f5c000-68f5d000 rw-p 00009000 08:02 1425456    /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2
+68f5d000-68f64000 r--s 00000000 08:02 1695984    /usr/lib/i386-linux-gnu/gconv/gconv-modules.cache
+68f64000-68f6d000 r--p 00000000 08:02 6666399    /usr/share/locale/hu/LC_MESSAGES/libc.mo
+68f6d000-68fba000 r-xp 00000000 00:14 25788471   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libawt_xawt.so
+68fba000-68fbc000 rw-p 0004c000 00:14 25788471   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libawt_xawt.so
+68fbc000-68fbd000 rw-p 00000000 00:00 0 
+68fbd000-69043000 r-xp 00000000 00:14 25788457   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libawt.so
+69043000-6904a000 rw-p 00086000 00:14 25788457   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libawt.so
+6904a000-6906e000 rw-p 00000000 00:00 0 
+6906e000-6906f000 ---p 00000000 00:00 0 
+6906f000-690ef000 rw-p 00000000 00:00 0 
+690ef000-690f2000 ---p 00000000 00:00 0 
+690f2000-69170000 rw-p 00000000 00:00 0 
+69170000-69173000 ---p 00000000 00:00 0 
+69173000-691f1000 rw-p 00000000 00:00 0 
+691f1000-691f4000 ---p 00000000 00:00 0 
+691f4000-69242000 rw-p 00000000 00:00 0 
+69242000-693bd000 r--p 00000000 08:02 6662095    /usr/lib/locale/locale-archive
+693bd000-693c0000 ---p 00000000 00:00 0 
+693c0000-6940e000 rw-p 00000000 00:00 0 
+6940e000-6940f000 ---p 00000000 00:00 0 
+6940f000-694de000 rw-p 00000000 00:00 0 
+694de000-696b4000 r--s 03ca8000 00:14 4046998    /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/rt.jar
+696b4000-69afa000 rw-p 00000000 00:00 0 
+69afa000-69b00000 ---p 00000000 00:00 0 
+69b00000-69bf9000 rw-p 00000000 00:00 0 
+69bf9000-69c00000 ---p 00000000 00:00 0 
+69c03000-69c11000 r-xp 00000000 08:02 1425459    /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+69c11000-69c12000 rw-p 0000e000 08:02 1425459    /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+69c12000-69c17000 r-xp 00000000 08:02 6665427    /usr/lib/i386-linux-gnu/libXtst.so.6.1.0
+69c17000-69c18000 rw-p 00004000 08:02 6665427    /usr/lib/i386-linux-gnu/libXtst.so.6.1.0
+69c18000-69c1b000 ---p 00000000 00:00 0 
+69c1b000-69c69000 rw-p 00000000 00:00 0 
+69c69000-69c6c000 ---p 00000000 00:00 0 
+69c6c000-6bdea000 rw-p 00000000 00:00 0 
+6bdea000-6bdeb000 ---p 00000000 00:00 0 
+6bdeb000-6be6b000 rw-p 00000000 00:00 0 
+6be6b000-6be6c000 ---p 00000000 00:00 0 
+6be6c000-6bf00000 rw-p 00000000 00:00 0 
+6bf00000-6c027000 ---p 00000000 00:00 0 
+6c027000-6c03b000 rw-p 00000000 00:00 0 
+6c03b000-6c161000 ---p 00000000 00:00 0 
+6c161000-6c16c000 rw-p 00000000 00:00 0 
+6c16c000-6c1ff000 ---p 00000000 00:00 0 
+6c1ff000-6ea00000 rw-p 00000000 00:00 0 
+6ea00000-93780000 ---p 00000000 00:00 0 
+93780000-94b80000 rw-p 00000000 00:00 0 
+94b80000-a7200000 ---p 00000000 00:00 0 
+a7202000-a7204000 r--s 00000000 08:02 1148827    /var/cache/fontconfig/7ef2298fde41cc6eeb7af42e48b7d293-le32d4.cache-3
+a7204000-a720d000 r-xp 00000000 08:02 1425453    /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+a720d000-a720e000 rw-p 00008000 08:02 1425453    /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+a720e000-a7213000 r--s 00309000 00:14 21782646   /home/gyuraszkrisztian/Develop/Java/YoutubeDownloader/dist/lib/sqlite-jdbc-3.7.2.jar
+a7213000-a7218000 r--s 002f8000 00:14 4046986    /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/charsets.jar
+a7218000-a7273000 rw-p 00000000 00:00 0 
+a7273000-a7274000 ---p 00000000 00:00 0 
+a7274000-a72ff000 rw-p 00000000 00:00 0 
+a72ff000-a76b4000 ---p 00000000 00:00 0 
+a76b4000-a796c000 rwxp 00000000 00:00 0 
+a796c000-b66b4000 ---p 00000000 00:00 0 
+b66b4000-b66be000 r-xp 00000000 08:02 204889     /lib/i386-linux-gnu/i686/cmov/libnss_files-2.13.so
+b66be000-b66bf000 r--p 00009000 08:02 204889     /lib/i386-linux-gnu/i686/cmov/libnss_files-2.13.so
+b66bf000-b66c0000 rw-p 0000a000 08:02 204889     /lib/i386-linux-gnu/i686/cmov/libnss_files-2.13.so
+b66c0000-b66c1000 rw-p 00000000 00:00 0 
+b66c1000-b66c3000 r--s 00000000 08:02 1148826    /var/cache/fontconfig/452f1fac34b224105d7acfae3034bcd5-le32d4.cache-3
+b66c3000-b66da000 rw-p 00000000 00:00 0 
+b66da000-b66e2000 rw-s 00000000 08:02 1662993    /tmp/hsperfdata_gyuraszkrisztian/9259
+b66e2000-b6706000 r-xp 00000000 00:14 25788494   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libjava.so
+b6706000-b6707000 rw-p 00023000 00:14 25788494   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libjava.so
+b6707000-b6712000 r-xp 00000000 00:14 25788456   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libverify.so
+b6712000-b6713000 rw-p 0000b000 00:14 25788456   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libverify.so
+b6713000-b671a000 r-xp 00000000 08:02 204897     /lib/i386-linux-gnu/i686/cmov/librt-2.13.so
+b671a000-b671b000 r--p 00006000 08:02 204897     /lib/i386-linux-gnu/i686/cmov/librt-2.13.so
+b671b000-b671c000 rw-p 00007000 08:02 204897     /lib/i386-linux-gnu/i686/cmov/librt-2.13.so
+b671c000-b671f000 ---p 00000000 00:00 0 
+b671f000-b676d000 rw-p 00000000 00:00 0 
+b676d000-b6791000 r-xp 00000000 08:02 204879     /lib/i386-linux-gnu/i686/cmov/libm-2.13.so
+b6791000-b6792000 r--p 00023000 08:02 204879     /lib/i386-linux-gnu/i686/cmov/libm-2.13.so
+b6792000-b6793000 rw-p 00024000 08:02 204879     /lib/i386-linux-gnu/i686/cmov/libm-2.13.so
+b6793000-b70cd000 r-xp 00000000 00:14 25806087   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/server/libjvm.so
+b70cd000-b7139000 rw-p 00939000 00:14 25806087   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/server/libjvm.so
+b7139000-b755e000 rw-p 00000000 00:00 0 
+b755e000-b76bb000 r-xp 00000000 08:02 204871     /lib/i386-linux-gnu/i686/cmov/libc-2.13.so
+b76bb000-b76bd000 r--p 0015d000 08:02 204871     /lib/i386-linux-gnu/i686/cmov/libc-2.13.so
+b76bd000-b76be000 rw-p 0015f000 08:02 204871     /lib/i386-linux-gnu/i686/cmov/libc-2.13.so
+b76be000-b76c1000 rw-p 00000000 00:00 0 
+b76c1000-b76c3000 r-xp 00000000 08:02 204877     /lib/i386-linux-gnu/i686/cmov/libdl-2.13.so
+b76c3000-b76c4000 r--p 00001000 08:02 204877     /lib/i386-linux-gnu/i686/cmov/libdl-2.13.so
+b76c4000-b76c5000 rw-p 00002000 08:02 204877     /lib/i386-linux-gnu/i686/cmov/libdl-2.13.so
+b76c5000-b76c6000 rw-p 00000000 00:00 0 
+b76c6000-b76da000 r-xp 00000000 00:14 3260728    /home/gyuraszkrisztian/Develop/Java/JDK8/lib/i386/jli/libjli.so
+b76da000-b76db000 rw-p 00013000 00:14 3260728    /home/gyuraszkrisztian/Develop/Java/JDK8/lib/i386/jli/libjli.so
+b76db000-b76f0000 r-xp 00000000 08:02 204860     /lib/i386-linux-gnu/i686/cmov/libpthread-2.13.so
+b76f0000-b76f1000 r--p 00014000 08:02 204860     /lib/i386-linux-gnu/i686/cmov/libpthread-2.13.so
+b76f1000-b76f2000 rw-p 00015000 08:02 204860     /lib/i386-linux-gnu/i686/cmov/libpthread-2.13.so
+b76f2000-b76f5000 rw-p 00000000 00:00 0 
+b76f5000-b76f7000 r-xp 00000000 08:02 6664303    /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+b76f7000-b76f8000 rw-p 00001000 08:02 6664303    /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+b76f8000-b76fa000 r--s 00029000 00:14 21774368   /home/gyuraszkrisztian/Develop/Java/YoutubeDownloader/dist/YoutubeDownloader.jar
+b76fa000-b7713000 r-xp 00000000 00:14 15164051   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libzip.so
+b7713000-b7714000 rw-p 00018000 00:14 15164051   /home/gyuraszkrisztian/Develop/Java/JDK8/jre/lib/i386/libzip.so
+b7714000-b7715000 rw-p 00000000 00:00 0 
+b7715000-b7716000 r--p 00000000 00:00 0 
+b7716000-b7718000 rw-p 00000000 00:00 0 
+b7718000-b7719000 r-xp 00000000 00:00 0          [vdso]
+b7719000-b7735000 r-xp 00000000 08:02 6807719    /lib/i386-linux-gnu/ld-2.13.so
+b7735000-b7736000 r--p 0001b000 08:02 6807719    /lib/i386-linux-gnu/ld-2.13.so
+b7736000-b7737000 rw-p 0001c000 08:02 6807719    /lib/i386-linux-gnu/ld-2.13.so
+bfab4000-bfab5000 rwxp 00000000 00:00 0 
+bfae7000-bfb08000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+java_command: dist/YoutubeDownloader.jar
+java_class_path (initial): dist/YoutubeDownloader.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/gyuraszkrisztian/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/real/RealPlayer:/home/gyuraszkrisztian/Develop/Java/JDK8/bin
+USERNAME=gyuraszkrisztian
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x891f70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x891f70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x71d8e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x71d8e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x71d8e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x71d8e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x71f090], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x720590], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x720590], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x720590], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x720590], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 7 (wheezy)"
+NAME="Debian GNU/Linux"
+VERSION_ID="7"
+VERSION="7 (wheezy)"
+ID=debian
+ANSI_COLOR="1;31"
+HOME_URL="http://www.debian.org/"
+SUPPORT_URL="http://www.debian.org/support/"
+BUG_REPORT_URL="http://bugs.debian.org/"
+
+uname:Linux 3.2.0-4-686-pae #1 SMP Debian 3.2.60-1+deb7u3 i686
+libc:glibc 2.13 NPTL 2.13 
+rlimit: STACK 8192k, CORE 0k, NPROC 30103, NOFILE 4096, AS infinity
+load average:43,22 42,33 20,35
+
+/proc/meminfo:
+MemTotal:        3864508 kB
+MemFree:         2642568 kB
+Buffers:            3212 kB
+Cached:           463520 kB
+SwapCached:         1292 kB
+Active:           518940 kB
+Inactive:         489044 kB
+Active(anon):     287472 kB
+Inactive(anon):   286384 kB
+Active(file):     231468 kB
+Inactive(file):   202660 kB
+Unevictable:          20 kB
+Mlocked:              20 kB
+HighTotal:       2998312 kB
+HighFree:        1929060 kB
+LowTotal:         866196 kB
+LowFree:          713508 kB
+SwapTotal:       1951740 kB
+SwapFree:        1936208 kB
+Dirty:               196 kB
+Writeback:             4 kB
+AnonPages:        540196 kB
+Mapped:           145232 kB
+Shmem:             32604 kB
+Slab:              66524 kB
+SReclaimable:      39608 kB
+SUnreclaim:        26916 kB
+KernelStack:        3392 kB
+PageTables:         8724 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3883992 kB
+Committed_AS:    2503708 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       14964 kB
+VmallocChunk:     104164 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       49144 kB
+DirectMap2M:      862208 kB
+
+
+CPU:total 3 (3 cores per cpu, 1 threads per core) family 18 model 1 stepping 0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, popcnt, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 18
+model		: 1
+model name	: AMD A6-3500 APU with Radeon(tm) HD Graphics
+stepping	: 0
+microcode	: 0x3000027
+cpu MHz		: 2100.000
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 3
+core id		: 0
+cpu cores	: 3
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 6
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm 3dnowext 3dnow constant_tsc nonstop_tsc extd_apicid aperfmperf pni monitor cx16 popcnt lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt arat cpb hw_pstate npt lbrv svm_lock nrip_save pausefilter
+bogomips	: 4199.93
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm stc 100mhzsteps hwpstate [9]
+
+processor	: 1
+vendor_id	: AuthenticAMD
+cpu family	: 18
+model		: 1
+model name	: AMD A6-3500 APU with Radeon(tm) HD Graphics
+stepping	: 0
+microcode	: 0x3000027
+cpu MHz		: 2100.000
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 3
+core id		: 1
+cpu cores	: 3
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 6
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm 3dnowext 3dnow constant_tsc nonstop_tsc extd_apicid aperfmperf pni monitor cx16 popcnt lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt arat cpb hw_pstate npt lbrv svm_lock nrip_save pausefilter
+bogomips	: 4199.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm stc 100mhzsteps hwpstate [9]
+
+processor	: 2
+vendor_id	: AuthenticAMD
+cpu family	: 18
+model		: 1
+model name	: AMD A6-3500 APU with Radeon(tm) HD Graphics
+stepping	: 0
+microcode	: 0x3000027
+cpu MHz		: 2100.000
+cache size	: 1024 KB
+physical id	: 0
+siblings	: 3
+core id		: 2
+cpu cores	: 3
+apicid		: 2
+initial apicid	: 2
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 6
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm 3dnowext 3dnow constant_tsc nonstop_tsc extd_apicid aperfmperf pni monitor cx16 popcnt lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt arat cpb hw_pstate npt lbrv svm_lock nrip_save pausefilter
+bogomips	: 4199.60
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management: ts ttp tm stc 100mhzsteps hwpstate [9]
+
+
+
+Memory: 4k page, physical 3864508k(2642568k free), swap 1951740k(1936208k free)
+
+vm_info: Java HotSpot(TM) Server VM (25.20-b23) for linux-x86 JRE (1.8.0_20-b26), built on Jul 30 2014 13:29:53 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sun Sep 28 21:29:45 2014
+elapsed time: 7 seconds (0d 0h 0m 7s)
+
