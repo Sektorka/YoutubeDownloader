@@ -42,7 +42,7 @@ public class Settings {
             DIR_SEP + "YoutubeDownloader";
     
     public static final String APP_NAME = "Youtube videó letöltő";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.1.1";
     public static final String CONTACT = "krisztisektor@gmail.com";
     
     private static final String FILE = APP_CONFIG_DIR + 
